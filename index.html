@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello Vue</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<nav class="nav navbar">
+		<ul>
+			<li><a href=""></a></li>
+			<li><a href=""></a></li>
+			<li><a href=""></a></li>
+		</ul>
+	</nav>
+	<div id="vue1">
+		{{message}}
+	</div>
+	<hr>
+	<div id="vue2">
+		<p v-bind:title="message">Hover your mouse over me</p>
+	</div>
+	<hr>
+	<div id="vue3">
+		<span v-if="sean">Now you show me</span>
+	</div>
+	<hr>
+	<div id="vue4">
+		<ol>
+			<li v-for="todo in todos">{{todo.text}}</li>
+		</ol>
+	</div>
+	<hr>
+	<div id="vue5">
+		<p>{{message}}</p>
+		<button v-on:click="btn">button</button>
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	var app1 = new Vue({
+		el:"#vue1",
+		data:{
+			message:"Hello Vuejs"
+		}
+	})
+	var app2 = new Vue({
+		el:"#vue2",
+		data:{
+			message:"Now " + new Date()
+		}
+	})
+	var app3 = new Vue({
+		el:"#vue3",
+		data:{
+			sean:true
+		}
+	})
+	var app4 = new Vue({
+		el:"#vue4",
+		data:{
+			todos:[
+				{text:"first line"},
+				{text:"next line"},
+				{text:"last line"}
+			]
+		}
+	})
+	var app5 = new Vue({
+		el:"#vue5",
+		data:{
+			message:"Hello Vuejs!"
+		},
+		methods:{
+			btn:function(){
+				this.message = this.message.split('').reverse().join('');
+			}
+		}
+	})
+</script>
+</html>
